@@ -26,7 +26,10 @@
                 <ul class="list-group list-group-flush w-100">
                     <li class="list-group-item list-group-item-action" :class="task.done?'ms-done':''"
                         v-for="task in taskList">
-                        {{ task.task }}</li>
+                        {{ task.task }}
+                        <span v-if="task.done" class="badge bg-success ms-3">Done</span>
+                        <span v-if="!task.done" class="badge bg-danger ms-3">Undone</span>
+                    </li>
                 </ul>
 
                 <div class="d-flex justify-content-center gap-2 mt-5">
