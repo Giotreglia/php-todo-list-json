@@ -3,29 +3,39 @@
 $taskList = [
     [
         'task' => 'Fare colazione',
-        'done' => 'false'
+        'done' => false
     ],
     [
         'task' => 'Lavarsi i denti',
-        'done' => 'false'
+        'done' => false
     ],
     [
         'task' => 'Accendere il pc',
-        'done' => 'false'
+        'done' => true
     ],
     [
         'task' => 'Fare Lezione',
-        'done' => 'false'
+        'done' => false
     ],
     [
         'task' => 'Pranzare',
-        'done' => 'false'
+        'done' => false
     ],
     [
         'task' => 'Fare esercizio',
-        'done' => 'false'
+        'done' => false
     ]
 ]; 
+
+/*  if (isset($_POST['task'])) {
+
+    $newTask = json_decode($_POST['task']);
+    $taskList .= 
+        [
+            'task' => $newTask,
+            'done' => false
+        ]
+}   */
 
 header('Content-Type: application/json');
 echo json_encode($taskList);
