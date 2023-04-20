@@ -24,7 +24,7 @@
 
             <div class="container p-5 bg-light rounded my-5">
                 <ul class="list-group list-group-flush w-100">
-                    <li class="list-group-item list-group-item-action" :class="task.done?'ms-done':''"
+                    <li class="list-group-item list-group-item-action" :class="task.done?'ms-done':'fw-bold'"
                         v-for="task in taskList">
                         {{ task.task }}
                         <span v-if="task.done" class="badge bg-success ms-3">Done</span>
