@@ -27,15 +27,15 @@ $taskList = [
     ]
 ]; 
 
-/*  if (isset($_POST['task'])) {
+if (isset($_POST['task'])) {
 
-    $newTask = json_decode($_POST['task']);
-    $taskList .= 
+    $newTask = $_POST['task'];
+    $taskList[] = 
         [
             'task' => $newTask,
             'done' => false
-        ]
-}   */
+        ];
+};  
 
 header('Content-Type: application/json');
 echo json_encode($taskList);
