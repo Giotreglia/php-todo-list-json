@@ -1,31 +1,11 @@
 <?php
 
-$taskList = [
-    [
-        'task' => 'Fare colazione',
-        'done' => false
-    ],
-    [
-        'task' => 'Lavarsi i denti',
-        'done' => false
-    ],
-    [
-        'task' => 'Accendere il pc',
-        'done' => true
-    ],
-    [
-        'task' => 'Fare Lezione',
-        'done' => false
-    ],
-    [
-        'task' => 'Pranzare',
-        'done' => false
-    ],
-    [
-        'task' => 'Fare esercizio',
-        'done' => false
-    ]
-]; 
+if (file_exists('database.json')) {
+    $string = file_get_contents('database.json');
+    $taskList = json_decode($string, true);
+} else {
+    $taskList = []; 
+}
 
 if (isset($_POST['task'])) {
 
@@ -35,6 +15,8 @@ if (isset($_POST['task'])) {
             'task' => $newTask,
             'done' => false
         ];
+    $myString = json_encode($taskList);
+    file_put_contents('database.json', $myString);
 };  
 
 header('Content-Type: application/json');

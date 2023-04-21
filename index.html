@@ -9,8 +9,21 @@
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <title>Todolist</title>
     <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
         .ms-done {
             text-decoration: line-through;
+        }
+
+        .ms-title {
+            font-size: 100px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        #line {
+            height: 5px;
         }
     </style>
 </head>
@@ -20,23 +33,30 @@
     <div id="app">
         <main>
 
-            <h1 class="text-warning text-center mt-5">Todolist</h1>
+            <h1 class="ms-title text-warning text-center mt-5">Todolist</h1>
 
-            <div class="container p-5 bg-light rounded my-5">
-                <ul class="list-group list-group-flush w-100">
-                    <li class="list-group-item list-group-item-action" :class="task.done?'ms-done':'fw-bold'"
-                        v-for="task in taskList">
+
+
+            <div class="container bg-light rounded my-5 w-25">
+
+                <div v-if="taskList.length == 0" id="line" class="bg-light"></div>
+
+                <ul v-else class="list-group list-group-flush w-100">
+                    <li class="list-group-item list-group-item-action d-flex justify-content-between"
+                        :class="task.done?'ms-done':'fw-bold'" v-for="task in taskList">
                         {{ task.task }}
-                        <span v-if="task.done" class="badge bg-success ms-3">Done</span>
-                        <span v-if="!task.done" class="badge bg-danger ms-3">Undone</span>
+                        <div>
+                            <span v-if="task.done" class="badge bg-success ms-3">Done</span>
+                            <span v-if="!task.done" class="badge bg-danger ms-3">Undone</span>
+                        </div>
                     </li>
                 </ul>
+            </div>
 
-                <div class="d-flex justify-content-center gap-2 mt-5">
-                    <input class="rounded" type="text" v-model="taskItem">
-                    <button class="btn btn-warning" @click="addTask">Aggiungi Task</button>
-                </div>
-
+            <div class="d-flex justify-content-center gap-2 mt-5">
+                <input class="rounded p-2" type="text" v-model="taskItem" placeholder="Inserisci nuova Todo..."
+                    @keyup.enter="addTask">
+                <button class="btn btn-warning" @click="addTask">Aggiungi Task</button>
             </div>
 
         </main>
