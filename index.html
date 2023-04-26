@@ -43,8 +43,10 @@
 
                 <ul v-else class="list-group list-group-flush w-100">
                     <li class="list-group-item list-group-item-action d-flex justify-content-between"
-                        :class="task.done?'ms-done':'fw-bold'" v-for="task in taskList">
-                        {{ task.task }}
+                        v-for="(task, index) in taskList">
+                        <span :class="task.done?'ms-done':'fw-bold'" @click="setDone(index)">
+                            {{ task.task }}
+                        </span>
                         <div>
                             <span v-if="task.done" class="badge bg-success ms-3">Done</span>
                             <span v-if="!task.done" class="badge bg-danger ms-3">Undone</span>
@@ -56,7 +58,7 @@
             <div class="d-flex justify-content-center gap-2 mt-5">
                 <input class="rounded p-2" type="text" v-model="taskItem" placeholder="Inserisci nuova Todo..."
                     @keyup.enter="addTask">
-                <button class="btn btn-warning" @click="addTask">Aggiungi Task</button>
+                <button class="btn btn-warning" @click="addTask">Aggiungi</button>
             </div>
 
         </main>

@@ -25,8 +25,23 @@ createApp({
                     headers: { 'Content-Type': 'multipart/form-data' }
                 }
             ).then(response => {
+
                 this.taskList = response.data;
                 this.taskItem = '';
+                console.log(this.taskList);
+            })
+        },
+        setDone(index) {
+            console.log(index);
+            const data = {
+                setTaskDone: index
+            };
+            axios.post('server.php', data,
+                {
+                    headers: { 'Content-Type': 'multipart/form-data' }
+                }
+            ).then(response => {
+                this.taskList = response.data;
             })
         }
     },
