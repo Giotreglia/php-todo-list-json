@@ -43,6 +43,18 @@ createApp({
             ).then(response => {
                 this.taskList = response.data;
             })
+        },
+        removeTask(index) {
+            const data = {
+                removeTask: index
+            };
+            axios.post('server.php', data,
+                {
+                    headers: { 'Content-Type': 'multipart/form-data' }
+                }
+            ).then(response => {
+                this.taskList = response.data;
+            })
         }
     },
     mounted() {
